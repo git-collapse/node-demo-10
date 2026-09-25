@@ -3,6 +3,18 @@ const { add, multiply } = require("./math");
 
 const app = express();
 
+app.get("/", (req, res) => {
+    res.json({
+        message: "Jenkins Node Demo API",
+        status: "UP",
+        endpoints: [
+            "/health",
+            "/api/add?a=5&b=7",
+            "/api/multiply?a=5&b=7"
+        ]
+    });
+});
+
 app.get("/health", (req, res) => {
     res.json({
         status: "UP",

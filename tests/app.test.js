@@ -3,6 +3,14 @@ const app = require("../src/app");
 
 describe("Application API", () => {
 
+    test("root endpoint returns welcome message", async () => {
+        const response = await request(app)
+            .get("/");
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.message).toBe("Jenkins Node Demo API");
+    });
+
     test("health endpoint returns UP", async () => {
         const response = await request(app)
             .get("/health");
